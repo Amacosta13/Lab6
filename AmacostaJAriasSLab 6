@@ -1,0 +1,170 @@
+//Janete Amacosta & Samantha Arias
+//CPSC 121 Lab 6
+//03-28-18
+
+#include<iostream>
+using namespace std;
+
+void selectionSort(int[], int);
+void showArray(const int[], int);
+
+int main() {
+
+	char choice, option;
+	int i;
+
+	int arr[10];
+
+	do {
+		cout << "----------------------Menu-----------------------\n";	//Display the menu
+		cout << "1. Input Values\n";
+		cout << "2. Provide a range for randomly generated values\n";
+		cout << "   to fill the array\n";
+		cout << "3. Use default range for random values\n" << endl;
+
+		cout << "Please choose one of the following from the menu: ";
+		cin >> choice;
+
+		if (choice == '1') {	//User enters 10 numbers
+			cout << "Please enter 10 digits: \n";
+
+			for (int i = 0; i < 10; i++) {	//enter numbers to array
+				cin >> arr[i];
+			}
+
+
+
+			cout << "Elements of Array: " << arr[0];
+			cout << " " << arr[1];
+			cout << " " << arr[2];
+			cout << " " << arr[3];
+			cout << " " << arr[4];
+			cout << " " << arr[5];
+			cout << " " << arr[6];
+			cout << " " << arr[7];
+			cout << " " << arr[8];
+			cout << " " << arr[9] << endl << endl;
+		}
+		else if (choice == '2') {
+			cout << "Provide a range for randomly generated values ";
+			cout << "to fill the array\n";
+
+			int arr[100];	//displays randomly generated values to the array
+			int k;
+			for (k = 0; k < 100; k++) {
+				arr[k] = rand() % 100;
+			}
+			for (k = 0; k < 100; k++) {
+				printf("arr[%d] = %d  ", k, arr[k]);
+			}
+
+			cout << " " << arr[0];
+			cout << " " << arr[1];
+			cout << " " << arr[2];
+			cout << " " << arr[3];
+			cout << " " << arr[4];
+			cout << " " << arr[5];
+			cout << " " << arr[6];
+			cout << " " << arr[7];
+			cout << " " << arr[8];
+			cout << " " << arr[9] << endl << endl;
+
+
+		}
+		else if (choice == '3') {	//inputs random numbers
+			cout << "Use default range for random values \n";
+			void fillRandom(int arr[], int range = 100, int min = 0);
+
+			cout << " " << arr[0];
+			cout << " " << arr[1];
+			cout << " " << arr[2];
+			cout << " " << arr[3];
+			cout << " " << arr[4];
+			cout << " " << arr[5];
+			cout << " " << arr[6];
+			cout << " " << arr[7];
+			cout << " " << arr[8];
+			cout << " " << arr[9] << endl << endl;
+		}
+		else {	//default
+			cout << "You did not enter any of the following \n";
+
+		}
+
+		char input;
+		cout << "Please choose one of the following: " << endl;
+		cout << "A. Sorting Ascended\n";
+		cout << "B. Sorting Descended\n";
+		cin >> input;
+
+		if (input == 'A' || input == 'a') {	//user chose sort ascended
+			int k;
+			for (i = 0; i <= 10; i++) {	//loop for ascended
+				for (k = i + 1; k <= 10; k++) {
+					int temp;
+
+					if (arr[i] > arr[k]) {
+						temp = arr[i];
+						arr[i] = arr[k];
+						arr[k] = temp;
+					}
+				}
+			}
+
+			for (i = 0; i <= 10; i++) {
+				cout << endl << arr[i] << endl;
+			}
+
+		}
+
+		else if (input == 'B' || input == 'b') {	//user chose descended
+			int temp;
+
+			for (int h = 0; h < i; h++) {
+				for (int j = i + 1; j < i; j++) {
+					if (arr[j] < arr[h]) {
+						temp = arr[i];
+						arr[h] = arr[j];
+						arr[j] = temp;
+
+						cout << "Ascending Order Array: \n" << endl;
+						for (h = 0; h < i; h++)
+							cout << arr[i] << " " << endl << endl;
+					}
+				}
+			}
+		}
+		char answer;
+		cout << "Please choose one of the following \n";
+		cout << "(B = Bubble Sort or S = Selection Sort): ";
+		cin >> answer;
+
+		if (answer == 'B' || answer == 'b') {	//bubble sort
+			int k;
+			for (i = 0; i <= 10; i++) {
+				for (k = i + 1; k <= 10; k++) {
+					int temp;
+
+					if (arr[i] > arr[k]) {
+						temp = arr[i];
+						arr[i] = arr[k];
+						arr[k] = temp;
+					}
+				}
+			}
+
+			for (i = 0; i <= 10; i++) {
+				cout << endl << arr[i] << endl;
+			}
+		}
+
+		else if (answer == 'S' || answer == 's') {
+			cout << "You picked selection sort\n";
+		}
+
+		cout << "Do you want to run the program again Y/N: ";	//asks user if they want to run the program again
+		cin >> option;
+	} while (option != 'N' && option != 'n');
+	system("pause");
+	return 0;
+}
